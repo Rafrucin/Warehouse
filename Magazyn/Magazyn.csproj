@@ -52,6 +52,7 @@
     <Compile Include="FinderForm.Designer.cs">
       <DependentUpon>FinderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FinderHelper.cs" />
     <Compile Include="GoodsIn.cs">
       <SubType>Form</SubType>
     </Compile>
