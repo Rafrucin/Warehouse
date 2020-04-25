@@ -52,9 +52,7 @@ namespace Magazyn
                     " all 3 boxes mustn't be empty and quantity must be a whole positive number",
                     "Invalid Data",
                     MessageBoxButtons.OK);
-            }
-
-            
+            }            
         }
 
         private void button1_Click(object sender, EventArgs e)
