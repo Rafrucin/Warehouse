@@ -23,13 +23,11 @@ namespace Magazyn
 
         private void button1_Click(object sender, EventArgs e)
         {
-           GridBoxUpdate(SearchLogic());
+           
+            GridBoxUpdate(SearchLogic());
         }
 
-        //var bindingList = new BindingList<ProductModel>(listOfProd);
-        //var source = new BindingSource(bindingList, null);
-        //DataGrid.DataSource = source;"
-        //var reduceList = listOfProd.Select(o => new { o.ProductName, o.Quantity, o.Location }).ToList();
+
         private void GridBoxUpdate(List<ProductModel> models)
         {
             var resultList = models.Select(o => new { o.StockNumber, o.ProductName, o.Quantity, o.Location, o.GoodsInDate }).ToList();
@@ -75,7 +73,7 @@ namespace Magazyn
 
                     foreach (var item in commons)
                     {
-                        output.Remove(item);
+                        output.Remove(item);                        
                     }
 
                     return output;
@@ -108,6 +106,60 @@ namespace Magazyn
             }
             return output;
 
+        }
+
+        private void DeleteSelectedButton_Click(object sender, EventArgs e)
+        {
+            if (ResulDataGridView.Rows.Count==0)
+            {
+                return;
+            }
+
+            int stockNumber =(int)ResulDataGridView.SelectedRows[0].Cells[0].Value;
+            
+            if (stockNumber!=0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Do you want to remove selected item permanently?", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    DataAccess.DeleteItem(stockNumber);
+                    models = DataAccess.GetModelsFromFile();
+                    GridBoxUpdate(SearchLogic());
+
+                }
+                
+            }
+        }
+
+        private void AddItemButton_Click(object sender, EventArgs e)
+        {
+            GoodsIn frm = new GoodsIn();
+            frm.ShowDialog(this);
+                       
+            models = DataAccess.GetModelsFromFile();
+            GridBoxUpdate(SearchLogic());
+        }
+
+        private void UpdateSelectedbutton_Click(object sender, EventArgs e)
+        {
+            if (ResulDataGridView.Rows.Count == 0)
+            {
+                return;
+            }
+
+            int stockNumber = (int)ResulDataGridView.SelectedRows[0].Cells[0].Value;
+            
+            ItemUpdateForm frm = new ItemUpdateForm(stockNumber);
+            frm.ShowDialog(this);
+                        
+            models = DataAccess.GetModelsFromFile();
+            GridBoxUpdate(SearchLogic());
+        }
+
+        private void ShowInventorybutton_Click(object sender, EventArgs e)
+        {
+            ProductInventory frm = new ProductInventory();
+            frm.ShowDialog(this);
         }
     }
 }

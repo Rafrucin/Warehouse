@@ -53,6 +53,7 @@ namespace Magazyn
             models.Add(model);
             List<string> output = ConvertProductList2StringList(models);
             File.WriteAllLines(FullPath(), output);
+            Logger.LogReceiver(model, "Item created");
         }
 
         public static List<ProductModel> GetModelsFromFile()
@@ -102,5 +103,33 @@ namespace Magazyn
             return model;
         }
 
+        public static void DeleteItem(int stockNumber)
+        {
+            List<ProductModel> models = GetModelsFromFile();
+            ProductModel toBeRemoved = models.Where(x => x.StockNumber == stockNumber).First();
+            models.Remove(toBeRemoved);
+            List<string> output = ConvertProductList2StringList(models);
+            File.WriteAllLines(FullPath(), output);
+            Logger.LogReceiver(toBeRemoved, "Item deleted");
+        }
+
+        public static void UpdateItem(ProductModel model)
+        {
+            List<ProductModel> models = GetModelsFromFile();
+            ProductModel toBeRemoved = models.Where(x => x.StockNumber == model.StockNumber).First();
+            models.Remove(toBeRemoved);
+            models.Add(model);
+            List<string> output = ConvertProductList2StringList(models);
+            File.WriteAllLines(FullPath(), output);
+            Logger.LogReceiver(model, "Item updated");
+        }
+
+        public static ProductModel GetModelByStockNumber (int stocknumber)
+        {
+            List<ProductModel> models = GetModelsFromFile();
+            ProductModel output = models.Where(x => x.StockNumber == stocknumber).First();
+            return output;
+        }
+    
     }
 }

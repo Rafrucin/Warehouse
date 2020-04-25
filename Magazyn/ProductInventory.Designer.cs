@@ -41,7 +41,7 @@
             this.DataGridAway.Location = new System.Drawing.Point(12, 23);
             this.DataGridAway.Name = "DataGridAway";
             this.DataGridAway.ReadOnly = true;
-            this.DataGridAway.Size = new System.Drawing.Size(562, 314);
+            this.DataGridAway.Size = new System.Drawing.Size(776, 415);
             this.DataGridAway.TabIndex = 0;
             // 
             // ProductInventory

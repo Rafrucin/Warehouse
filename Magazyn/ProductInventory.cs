@@ -12,7 +12,7 @@ namespace Magazyn
 {
     public partial class ProductInventory : Form
     {
-        private List<ProductModel> listOfProd = DataAccess.CovertStringList2ProductList(DataAccess.LoodFromFile());
+        private List<ProductModel> listOfProd = DataAccess.GetModelsFromFile(); 
 
         public ProductInventory()
         {
@@ -23,7 +23,7 @@ namespace Magazyn
 
         private void InitGrid()
         {
-            var reduceList = listOfProd.Select(o => new { o.ProductName, o.Quantity, o.Location, o.GoodsInDate }).ToList();
+            var reduceList = listOfProd.Select(o => new { o.StockNumber, o.ProductName, o.Quantity, o.Location, o.GoodsInDate }).ToList();
             DataGridAway.DataSource = reduceList;
         }
 

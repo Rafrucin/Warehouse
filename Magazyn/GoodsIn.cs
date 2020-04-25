@@ -12,13 +12,10 @@ namespace Magazyn
 {
     public partial class GoodsIn : Form
     {
-        private List<ProductModel> listOfProd = DataAccess.CovertStringList2ProductList(DataAccess.LoodFromFile());
-        
+                
         public GoodsIn()
         {
-            InitializeComponent();
-
-            
+            InitializeComponent();            
         }
 
         
@@ -62,10 +59,7 @@ namespace Magazyn
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Hide();
-            ProductInventory frm = new ProductInventory();
-            frm.ShowDialog(this);
-            Show();
+
         }
     }
 }

@@ -61,6 +61,13 @@
     </Compile>
     <Compile Include="HelperMethods.cs" />
     <Compile Include="IProductModel.cs" />
+    <Compile Include="ItemUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemUpdateForm.Designer.cs">
+      <DependentUpon>ItemUpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logger.cs" />
     <Compile Include="ProductInventory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GoodsIn.resx">
       <DependentUpon>GoodsIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemUpdateForm.resx">
+      <DependentUpon>ItemUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductInventory.resx">
       <DependentUpon>ProductInventory.cs</DependentUpon>
